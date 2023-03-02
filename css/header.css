@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#header
+{
+    width: 98.8vw;
+    height: 9.5vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#company_name
+{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 6vh;
+    margin: 0 0 0 15px;
+    color: white;
+    letter-spacing: 2;
+}
+
+#buttons-div
+{
+    display: flex;
+    align-items: center;
+    width: 500px;
+    margin-right: 60px;
+    justify-content: space-evenly;
+}
+
+.buttons{
+    padding: 12px 24px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    font-size: large;
+    border:3px solid white;
+    cursor: pointer;
+}
+
+.buttons:hover{
+    background-color: transparent;
+    color: white;
+    font-weight: 700;
+    padding: 10px 22px;
+    border: 2px solid white;
+    padding: 12px 22px;
+}
+
+.icon-div{
+    color: white;
+    font-size: 30px;
+    margin-left: 20px;
+    display: flex;
+    cursor: pointer;
+}
+.cart-num{
+    margin: 0;
+    padding-left: 5px;
+}
+
+.seller-btn{
+    color: white;
+    background-color: #cb410b;
+    padding: 15px 25px;
+    margin-right: 10px;
+    border: 0;
+}
+.seller-btn:hover{
+    border: 2px solid #cb410b;
+    color: #cb410b;
+    background-color: transparent;
+    padding: 13px 22px;
+}

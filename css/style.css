@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("images/index-bg.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+#container{
+    display: flex;
+
+}
+
+#left-pane{
+    width: 60vw;
+    padding: 3.5% 3%;
+}
+
+.company-name{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 4vw;
+    margin: 0;
+}
+
+.content-div{
+    padding: 0 13%;
+}
+
+.welcome-line{
+    font-size: 3.5vw;
+    font-family: 'Titan One', cursive;
+    color: #646464;
+    margin-bottom: 0;
+}
+
+.description-company{
+    font-family: 'Titan One', cursive;
+    color: #8b4513;
+    font-size: 2vw;
+}
+
+
+.login-signup
+{
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    border-radius: 10px;
+    width: 350px;
+    background-color: black;
+    margin-top: 150px;
+    letter-spacing: 2;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.login-signup:hover
+{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    height: 405px;
+    width: 355px;
+    transition-duration: 0.5s;
+}
+
+.login-signup-heading
+{
+    font-family: 'Gelasio', serif;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10px;
+    color: white;
+}
+
+.user-input
+{
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid white;
+    padding: 5px;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: white;
+    width: 100%;
+}
+.user-input::placeholder{
+    color: white;
+    font-size: 15px;
+}
+
+.user-input:active{
+    outline: none;
+    border: 0;
+    border-bottom: 2.7px solid white;
+}
+.user-input:focus{
+    outline: none;
+    border-bottom: 2.7px solid white;
+}
+
+.login-signup-submit{
+    background-color: transparent;
+    width: 50%;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+
+}
+
+.login-signup-submit:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.login-signup-text{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.login-signup-text:hover{
+    font-size: larger;
+}
+
+#login
+{
+    height: 330px;
+    display: none;
+}
+
+.continue{
+    margin-top: 20px;
+    margin-left: 200px;
+    padding: 15px;
+background-color: #cb410b;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+    font-size: 15;
+    font-weight: 700;
+    cursor: pointer;
+}
+.continue:hover{
+    background-color: transparent;
+    color: #cb410b;
+    border: 3px solid #cb410b;
+    padding: 12px;
+}
+

@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@700&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+button{
+    cursor: pointer;
+}
+
+#container-div{
+    height: 100vh;
+    width: 98.8vw;
+    background-image: url("images/home-bg.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+.main-div{
+    width: 98.8vw;
+    height: 25vh;
+    padding-top: 10vh;
+}
+
+.main-div-text{
+    text-align: center;
+    color: white;
+    font-family: 'Hanuman', serif;
+}
+
+#products-div-text{
+    display: flex;
+    width: 98.8vw;
+    height: 40px;
+    justify-content: center;
+    color: white;
+    margin-top: 50px;
+}
+
+.hr{
+    width: 40vw;
+    padding: 0 15px;
+    margin: 10px 0;
+}
+hr{
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.products-text{
+    margin: 0;
+    font-size: 30px;
+}
+
+.products{
+    padding-top: 30px;
+    width: 98.8vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.product{
+    border: 0;
+    border-radius: 10px;
+    width: 300px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    background-color: #FFFDF9;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    margin: 20px 10px;
+}
+.product:hover{
+    transform: scale(1.05);
+    transition-duration: 0.6s;
+}
+.product:active
+{
+    transform: scale(1);
+}
+
+
+
+.description-btn{
+    background-color: #cb410b;
+    border: 0;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.description-btn:hover{
+    transform: scale(1.05);
+    transition-duration: 0.6s;
+}
+.description-btn:active
+{
+    transform: scale(1);
+}
+
+
+.product-name
+{
+    font-family: 'Hanuman', serif;
+}
+
+#load_more{
+    text-align: center;
+    cursor: pointer;
+    color: blue;
+    font-size: large;
+    margin:0 34vw;
+    width: 30vw;
+    height: 50px;
+    border: 0;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #cb410b;
+    color: white;
+}
+#load_more:hover{
+    border: 3px solid #cb410b;
+    background-color: white;
+    color: #cb410b;
+}
+
+.add-to-cart
+{
+    background-color: white;
+    border: 2px solid #cb410b;
+    padding: 9px 14px;
+    color: #cb410b;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.add-to-cart:hover{
+    transform: scale(1.05);
+    transition-duration: 0.6s;
+}
+.add-to-cart:active
+{
+    transform: scale(1);
+}
+
+
+.description_outer_div{
+    display: none;
+    width: 98.8vw;
+    height: 100vh;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(5px);
+}
+
+.description_div{
+    width: 550px;
+    height: 570px;
+    font-family: 'Hanuman', serif;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.description_inner_div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.descr_close
+{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.descr_close:hover{
+    color:cornflowerblue;
+}
+#login-signup-back
+{
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    position:fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    z-index: 3;
+}
+
+.login-signup
+{
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    height: 420px;
+    border-radius: 10px;
+    width: 350px;
+    background-color: black;
+    letter-spacing: 2;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.login-signup:hover
+{
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    height: 425px;
+    width: 355px;
+    transition-duration: 0.5s;
+}
+
+.login-signup-heading
+{
+    font-family: 'Gelasio', serif;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10px;
+    color: white;
+}
+
+.user-input
+{
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid white;
+    padding: 5px;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: white;
+    width: 100%;
+}
+.user-input::placeholder{
+    color: white;
+    font-size: 15px;
+}
+
+.user-input:active{
+    outline: none;
+    border: 0;
+    border-bottom: 2.7px solid white;
+}
+.user-input:focus{
+    outline: none;
+    border-bottom: 2.7px solid white;
+}
+
+.login-signup-submit{
+    background-color: transparent;
+    width: 50%;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+
+}
+
+.login-signup-submit:hover{
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.login-signup-text{
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 30px;
+}
+.login-signup-text:hover{
+    font-size: larger;
+}
+
+#login
+{
+    height: 330px;
+    display: none;
+}
+.description_btn_div{
+    display: flex;
+    justify-content: center;
+}
+
+.descr_btns
+{
+    width: 70%;
+    padding: 10px;
+    background-color: #cb410b;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: larger;
+}
+.descr_btns:hover{
+    color: #cb410b;
+    background-color: transparent;
+    border: 2px solid #cb410b;
+}

@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@700&display=swap');
+body{
+    overflow:scroll;
+    background-repeat: repeat;
+    background-size: contain;
+}
+
+
+
+.cart-item-div{
+    width: 90%;
+    height: 250px;
+    display: flex;
+    margin-top: 20px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    border-radius: 3px;
+    background-color: white;
+}
+#your_orders_div{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    margin: auto;
+    overflow: auto;
+    height: 65vh;
+}
+.header{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: #1c4966;
+    color: white;
+    align-items: center;
+    padding: 2px 8px;
+}
+#products-div-text{
+    display: flex;
+    width: 98.8vw;
+    height: 40px;
+    justify-content: center;
+    color: black;
+    margin-top: 50px;
+}
+.products-text{
+    margin: 0;
+    font-size: 25px;
+    font-family: 'Hanuman', serif;
+}
+
+.hr{
+    width: 40vw;
+    padding: 0 15px;
+    margin: 10px 0;
+}
+hr{
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.about-us{
+    margin-right: 30px;
+    color: #1c4966;
+    background-color: white;
+    border: 0;
+    border-radius: 3px;
+    width: 120px;
+    height: 30px;
+}
+.about-us:hover{
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+}
+.products{
+    padding-top: 30px;
+    width: 98.8vw;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.product{
+    border: 0;
+    border-radius: 10px;
+    width: 300px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    background-color: #FFFDF9;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    margin: 20px 10px;
+}
+.product:hover{
+    transform: scale(1.05);
+    transition-duration: 0.6s;
+}
+.product:active
+{
+    transform: scale(1);
+}
+
+
+
+.description-btn{
+    background-color: #cb410b;
+    border: 0;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+.description-btn:hover{
+    transform: scale(1.05);
+    transition-duration: 0.6s;
+}
+.description-btn:active
+{
+    transform: scale(1);
+}
+
+
+.order-product-name
+{
+    font-family: 'Hanuman', serif;
+    font-size: 40px;
+    margin: 5px;
+}
+
+.product-name
+{
+    font-family: 'Hanuman', serif;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+#load_more{
+    text-align: center;
+    cursor: pointer;
+    color: blue;
+    font-size: large;
+    margin:0 34vw;
+    width: 30vw;
+    height: 50px;
+    border: 0;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #cb410b;
+    color: white;
+}
+#load_more:hover{
+    border: 3px solid #cb410b;
+    background-color: white;
+    color: #cb410b;
+}
+
+.add-to-cart
+{
+    background-color: white;
+    border: 2px solid #cb410b;
+    padding: 9px 14px;
+    color: #cb410b;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.add-to-cart:hover{
+    transform: scale(1.05);
+    transition-duration: 0.6s;
+}
+.add-to-cart:active
+{
+    transform: scale(1);
+}
+
+
+.description_outer_div{
+    display: none;
+    width: 98.8vw;
+    height: 100vh;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(5px);
+}
+
+.description_div{
+    width: 550px;
+    height: 570px;
+    font-family: 'Hanuman', serif;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.description_inner_div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.descr_close
+{
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.descr_close:hover{
+    color:cornflowerblue;
+}

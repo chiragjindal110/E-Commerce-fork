@@ -1,0 +1,27 @@
+ <div id="header">
+    <h1 id="company_name">Healthifyy</h1>
+    <div id="buttons-div">
+        <button class="buttons seller-btn"  id="become-seller">Become Seller</button>
+        <% if(!login){ %>
+            <button class="buttons"  id="login-register-btn">Login/Register</button>
+        <% }else{ %>
+            <button class="buttons"  id="logout" onclick="logout()">Logout</button>
+            <div id="icon-div"class="icon-div">
+                <i id="cart" class="fa fa-shopping-cart icon"></i>
+                <p style="margin:0 0 0 3px">cart</p>
+            </div>
+            <script>
+                var cart = document.getElementById("icon-div");
+                cart.addEventListener("click",()=>{
+                        window.location.href = "/cart";
+                })
+                function logout(){
+                  window.location.href = "/logout";
+             }
+            </script>
+        <% } %>
+        
+        <!-- <button class="buttons" id="logout">LogOut</button> -->
+      
+    </div>
+</div>

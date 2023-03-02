@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="seller-admin.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1 class="company-name">Healthifyy</h1>
+        <div class="buttons-div">
+            <button class="header_buttons">Orders Completed</button>
+            <button class="header_buttons" id="sellerlogout">Logout as Seller</button>
+        </div>
+    </div>
+    <div class="container">
+        <div id="products-cart" class="left-pane">
+            <div id="products-div-text">
+                <span class="hr">
+                    <hr>
+                </span>
+                <p class="products-text">Your Products</p>
+                <span class="hr">
+                    <hr>
+                </span>
+            </div>
+
+
+        </div>
+        <div class="right-pane">
+            <div class="add-product-div">
+                <h1 style="text-align: center;font-family: 'Labrada', serif;margin: 5px 0;">Add Product</h1>
+                <div class="image_div">
+                    <div id="image"></div>
+                    <div class="pic-upload-div"><i class="fa fa-edit edit-icon"></i><input id="product_pic" type="file"
+                            name="product_pic" required></div>
+                </div>
+                <div class="input-div">
+                    <input id="product-name" type="text" placeholder="Enter Product Name" required>
+                    <input id="product-description" type="text" placeholder="Enter Product Description" required>
+                    <input id="product-stock" type="text" placeholder="Stock Available" required>
+                    <input id="product-price" type="text" placeholder="Price of Product" required>
+                    <button id="product-submit-btn">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="seller-admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+button{
+    cursor: pointer;
+}
+.header{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: #1c4966;
+    color: white;
+    align-items: center;
+    padding: 2px 8px;
+}
+.container{
+    margin-top: 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    height: 90vh;
+}
+.left-pane{
+    width: 70%;
+    height: 90vh;
+    overflow: scroll;
+    
+}
+::-webkit-scrollbar{
+    width: 0;
+}
+.right-pane{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 20px;
+    height: 280px;
+}
+
+.place-order-btn{
+    color: white;
+    background-color: #ffa500;
+    border: 0;
+    border-radius: 2px;
+    width: 100%;
+    height: 30px;
+    font-size: large;
+}
+
+table{
+    width: 100%;
+    border-collapse:separate;
+                border-spacing:0 15px;
+}
+tr{
+    font-size: larger;
+}
+.p{
+    text-align: center;
+}
+
+#address{
+    width: 80%;
+    padding: 5px;
+}
+#address-submit{
+    width: 100px;
+    height: 32px;
+    margin-left: 15px;
+    border: 0;
+    border-radius: 3px;
+    background-color: #1c4966;
+    color: white;
+}
+#address-submit:hover{
+    border: 2px solid #1c4966;
+    background-color: white;
+    color: #1c4966;
+}
+
+.stored-address{
+    display: none;
+    margin: 3px ;
+    max-width: 70%;
+}
+.address-saved-flag{
+    display:none;
+}
+#change-address-btn{
+    display: none;
+    float: right;
+    margin-right: 30px;
+    width: 120px;
+    height: 30px;
+    background-color: #1c4966;
+    color: white;
+    border: 0;
+    border-radius: 3px;
+}
+#change-address-btn:hover{
+    border: 2px solid #1c4966;
+    background-color: white;
+    color: #1c4966;
+}
+
+#products_div
+{
+    overflow: auto;
+    height: 400px;
+}
+
+.about-us{
+    margin-right: 30px;
+    color: #1c4966;
+    background-color: white;
+    border: 0;
+    border-radius: 3px;
+    width: 120px;
+    height: 30px;
+}
+.about-us:hover{
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+}
