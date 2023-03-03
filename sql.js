@@ -510,6 +510,7 @@ module.exports = {
           }
         });
 
+        
         request.on('row', function (columns) {
           let result = {};
           columns.forEach(function (column) {
