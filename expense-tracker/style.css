@@ -1,0 +1,25 @@
+textarea{
+    height: 300px;
+    width: 900px;
+    display: block;
+    margin-top: 2px;
+  }
+  
+  .output-div
+  {
+    margin:50px 0 0 0;
+    background-color: black;
+    color: white;
+    width: 700px;
+    height: 200px;
+  }
+  
+  #Compile-btn
+  {
+    padding: 10px;
+    border-radius: 3px;
+    background-color: orange;
+    margin-top: 10px;
+    border: 0;
+    cursor: pointer;
+  }

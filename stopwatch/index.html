@@ -1,0 +1,29 @@
+<html>
+<head>
+  <link rel="stylesheet" href = "style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StopWatch</title>
+</head>
+<body>
+  
+  <div id ="container">
+    <label id="stopwatch">00 : 00 : 00</label>
+    <div id="buttons">
+    <div id="start-lap">
+      <div id="outer-start-btn"><button id="start-btn" onclick="start()"class="gray-btn">Start</button></div>
+      <div id="outer-lap-btn"><button id="lap-btn" onclick="lap()" class="gray-btn">Lap</button></div>
+    </div>
+    <div id="reset-stop">
+      <div id="outer-reset-btn"><button class="red-btn" onclick="reset()" id="reset-btn">Reset</button></div>
+      <div id="outer-stop-btn"><button class="red-btn" onclick="stop()" id="stop-btn">Stop</button></div>
+    </div>
+    </div>
+    <ul id="lap-list">
+        
+        
+    </ul>
+    
+  </div>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>

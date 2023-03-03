@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+  }
+  
+  .heading,.description
+  {  
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-color: #000033;
+    margin: 0;
+    padding: 5px 10px;
+  }
+  .description{
+    margin-bottom: 20px;
+  }
+  
+  .container
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #add
+  {
+    width: 80%;
+    max-width: 300px;
+    margin-bottom: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px ;
+    font-size: 20px;
+  }
+  
+  #add:focus
+  {
+    border: 3px solid lightblue;
+  }
+  
+  #bt1
+  {
+    border-radius: 7px;
+    background-color: white;
+    color: black;
+    padding: 2px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+  }
+  #bt1:hover{
+    background-color: black;
+    color: white;
+    border:2px solid white;
+  }
+  
+  li{
+    display: flex;
+    flex-wrap: wrap;
+    width: 60vw;
+    max-width: 500px;
+    min-width: 100px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    justify-content: center;
+    margin-right: 30px;
+    border: 2px solid black;
+  }
+  .items-div
+  {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3px;
+  }
+  .content
+  {
+    margin: 0;
+    padding-top: 3.5px;
+    overflow-wrap: break-word;
+    text-align: center;
+  }
+  
+  .delete,.edit,.update
+  {
+    background-color: white;
+    border: 0;
+    width: max-content;
+    margin: 0 5px;
+    color: black;
+    cursor: pointer;
+  }
+  
+  

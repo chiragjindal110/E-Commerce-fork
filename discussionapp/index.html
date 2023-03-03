@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Discussion App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    
+      <h1 id="heading">My Discussion Portal</h1>
+      <div class="container">
+
+        <div class="left-pane">
+          <div class="buttons-div">
+            <button id="new-question-button">New Question Form</button>
+            <input id="search-question-button" placeholder="Search Question..."/>
+          </div>
+          <p id="No-questions" style="margin:20px auto;">No Questions Yet!!!</p>
+          <div id="list-div">
+            <ul id="list">
+              
+            </ul>
+          </div>
+          
+        </div>
+
+        <div class="right-pane">
+          
+            <div id="discussion-portal">
+              <h1 class="heading-welcome">Welcome to Discussion Portal!</h1>
+              <p>Enter a subject and question to get started</p>
+              <input type="text" placeholder="Subject" id="subject-input" class="subject-input"/><br>
+              <textarea placeholder="question" id="question-input"class="question-input"></textarea><br>
+              <button id="submit-question" class="submit-question">Submit</button>
+            </div>
+            
+            <div id="responses">
+             <p id="for-id" hidden></p>
+              <h3>Question</h3>
+              <div id="question-div" class="question-div">
+                <h3 id="question-name"></h3>
+                <h4 id="question-content"></h4>
+              </div>
+              <button id="resolve-button" class="submit-question" >resolve</button>
+              <h3 style="margin-top:40px;">responses</h3>
+              <div id="responses-div" class="question-div">
+    
+              </div>
+              <div id="Add-response-div">
+              <h1 class="Add-response-heading">Add response</h1>
+              <input type="text" placeholder="Enter Name" id="response-name-input"class="subject-input"/><br>
+              <textarea placeholder="Enter Content" id="response-content-input" class="question-input" ></textarea><br>
+              <button id="submit-response"class="submit-question">Submit</button>
+            </div>
+            </div>
+        </div>
+
+      </div>
+      <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

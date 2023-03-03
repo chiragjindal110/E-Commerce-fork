@@ -1,0 +1,17 @@
+ <div id="header">
+    <h1 id="company_name">Healthifyy</h1>
+    <div id="buttons-div">
+        <button class="buttons seller-btn"  id="become-seller">Become Seller</button>
+        <% if(!login){ %>
+            <button class="buttons"  id="login-register" onclick="login()">Login/Register</button>
+        <% }else{ %>
+            <button class="buttons"  id="logout" onclick="logout()">Logout</button>
+        <% } %>
+        
+        <!-- <button class="buttons" id="logout">LogOut</button> -->
+        <div class="icon-div">
+            <i class="fa fa-shopping-cart icon"></i>
+            <p class="cart-num">0</p>
+        </div>
+    </div>
+</div>

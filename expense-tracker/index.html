@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="container">
+
+      <button id="add">+</button>
+      <p class="heading">Overview</p>
+      <div class="accounts">
+        <p>ACCOUNTS</p>
+        <div class="credit-div">
+          <p class="p">Debit</p>
+          <p id="credit-value"class="p credit-value"></p>
+        </div>
+        <div class="credit-div debit-div">
+          <p class="p">Credit</p>
+          <p id="debit-value"class="p debit-value"></p>
+        </div>
+      </div>
+      <hr>
+      <div class="expense-div">
+        <p>MY EXPENSES</p>
+        <div id="empty-progress-bar" class="empty-progress-bar">
+          <div id="filled-progress-bar"class="filled-progress-bar">
+          </div>
+        </div>
+        <p id="progress-expense" class="progress-expense"></p>
+      </div>
+      <hr>
+      <div class="history-div">
+        <p>HISTORY</p>
+        <ul id="list" class="history-list">
+          
+        </ul>
+      </div>
+    </div>
+    <div id="Enter-div" class="Enter-div">
+       <i id="Enter-icon"class="Enter-icon fa fa-times" aria-hidden="true"></i>
+       <div class="Enter-input-div">
+         <p class="Enter-p">Enter Text</p>
+         <input id="Enter-input1" type="text" placeholder="Enter Text" class="Enter-input1"/>
+         <p class="Enter-p">Enter Amount</p>
+         <input id="Enter-input2" type="number" placeholder="Enter Amount" class="Enter-input2"/>
+         <button id="Enter-button"class="Enter-button">Submit</button>
+       </div>
+     </div>
+     <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

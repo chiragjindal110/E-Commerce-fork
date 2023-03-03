@@ -1,0 +1,297 @@
+
+html{
+    font-family: 'PT Sans',sans-serif;
+  }
+  body{
+    margin: 0;
+    background-color: #F4F4F4;
+  }
+  
+  .menubar
+  {
+    display: flex;
+    background-color: #322;
+    position: fixed;
+    height: 38px;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+  .menuButtons
+  {
+    outline: none;
+    padding : 12px 0 10px 0;
+    width: 100px;
+    border: none;
+    background-color: #322;
+    color: white;
+  }
+  .menuButtons:hover{
+    padding: 15px 0 ;
+    background-color: #333;
+  }
+  
+  .showcase
+  {
+    display: flex;
+    width: 80%;
+    height: 80%;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    margin: 10% 10% 0 10%;
+  }
+  .showcase-text
+  {
+    text-align: center;
+    line-height: 35px;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .showcase-text1
+  {
+    text-align: center;
+    line-height: 35px;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .BeingGeeky
+  {
+    font-size: 4rem;
+    margin-bottom: 5px;
+    font-family: 'PT Sans',sans-serif;
+    font-weight:bold;
+    text-align: center;
+  }
+  .descr
+  {
+    font-size: 2rem;
+    margin-bottom: 0px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  
+  .documentation
+  {
+    height:auto;
+    background-color: rgb(71, 111, 112);
+    margin : 0;
+    margin-top:5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+  }
+  .doc
+  {
+    font-size: 2.4rem;
+  }
+  .color
+  {
+    color: white;
+    text-align: center;
+  }
+  
+  .blue-button
+  {
+      background-color: #103063;
+      color: white;
+      padding: 20px 15px;
+      border: none;
+      font-size: 16px;
+  }
+  .blue-button:hover{
+    background-color: #143f85;
+  }
+  
+  
+  .video
+  {
+      margin-top: 10px;
+      height: auto;
+  }
+  
+  
+  .video-image
+  {
+    margin: 30px 0;
+  }
+  
+  .lecture
+  {
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+  
+  .coupons
+  {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: auto;
+    padding: 2% 0;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+  }
+  .coup-image
+  {
+    width: 30%;
+    height: 30%;
+  }
+  .coupon-text
+  {
+    width: 30%;
+  }
+  .coup-heading
+  {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+    font-weight: bold;
+    
+  }
+  
+  .redeem
+  {
+    text-decoration: none;
+    color: darkblue;
+  }
+  
+  .footer
+  {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5% 10%;
+    width: 80%;
+    flex-direction: row;
+    background-color: rgb(71, 111, 112);
+  }
+  .footer-text
+  {
+    text-align:left;
+    color: grey;
+    font-weight: bold;
+  }
+  .footer-content
+  {
+    width: max-content;
+    height: max-content;
+  }
+  .color1
+  {
+    color: white;
+    font-weight: bold;
+  }
+  .icon{
+      color: white;
+      background-color: #333;
+      margin-left: 10px;
+    }
+    #slider{
+      display: none;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      flex-direction: column;
+      background-color: #332;
+    }
+    .sliderButtons
+    {
+      width: 100vw;
+      background-color: #333;
+      border: 0;
+      border-bottom: 1px solid #555;
+      text-align:left;
+      padding: 14px;
+      color: white;
+    }
+    .sliderButtons:hover
+    {
+      background-color: #321;
+    }
+    
+    a{
+      text-decoration: none;
+    }
+    
+  @media screen and (max-width:500px)
+  {
+    #slider-open1
+    {
+      display: block;
+      width: 100vw;
+      height: max-content;
+      position: fixed;
+      top: 0;
+      background-color: #333;
+    }
+    #slider-open
+    {
+      display: block;
+      width: 100vw;
+      height: max-content;
+      background-color: #333;
+    }
+    .sliderButtons-last
+    {
+      width: 85vw;
+      background-color: #333;
+      text-align:left;
+      padding: 14px;
+      color: white;
+      border: 0;
+      text-decoration: none;
+    }
+    
+  }
+  
+  @media screen and (max-width:700px)
+  {
+    
+    
+    .showcase
+    {
+      height: 35vh;
+    }
+    .BeingGeeky
+    {
+      font-size: 3rem;
+    }
+    .descr
+    {
+      font-size: 1.5rem;
+    }
+    .showcase-text
+    {
+      display: none;
+    }
+    
+    .documentation
+    {
+      height : auto;
+    }
+    .video{
+      height : auto;
+    }
+    .footer
+    {
+      display: none;
+    }
+    
+  }
+  
+  @media all and (max-width:800px)
+  {
+    .coupons{
+      flex-direction: column;
+      padding: 5% 10%;
+    }
+    .coupon-text
+    {
+      width: 100%;
+    }
+    .coup-image{
+      width: 60%;
+      height: 60%;
+    }
+  }

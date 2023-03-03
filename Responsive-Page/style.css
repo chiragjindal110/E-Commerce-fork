@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lato&display=swap');
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  overflow: overlay;
+}
+.top-div
+{
+  background-image:url('bg2.webp');
+  background-repeat:no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+
+.header
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading
+{
+  padding: 20px 20px 20px 30px;
+  margin: 0;
+  font-size:50px;
+  color: white;
+}
+
+
+
+.buttons-div
+{
+  display: flex;
+    justify-content: space-evenly;
+    width: 300px;
+    margin-right: 40px;
+}
+
+.login-signin-buttons
+{
+  
+  --b: 5px;   /* border thickness */
+  --s: .45em; /* size of the corner */
+  --color: white;
+  
+  padding: calc(1em + var(--s)) calc(1.5em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 16px;
+
+  border: 0;
+  font-weight: bold;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  
+}
+
+.login-signin-buttons:hover,
+.login-signin-buttons:focus-visible{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+  color: white;
+}
+
+.login-signin-buttons:active {
+  background: var(--color);
+  color: #fff;
+}
+
+
+.navbar
+{
+  position: sticky;
+    margin: auto;
+    top: 100px;
+    width: 100vw;
+    justify-content: center;
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 0;
+    
+}
+
+.navbar-buttons
+{
+  padding: 25px 50px;
+  background-color: black;
+  color: white;
+  border: 0;
+  font-size: large;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.navbar-buttons:hover
+{
+  background-color: orange;
+  transition-duration: 0.7s;
+  color: black;
+}
+.navbar-buttons-starts
+{
+  border-radius: 7px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.navbar-buttons-ends
+{
+  border-radius: 7px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.Search-input-div
+{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.search-jobs-div
+{
+   display: flex;
+    width: 50%;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 100px;
+    
+}
+
+.Search-jobs-input
+{
+  width: 250px;
+  padding: 15px;
+  border-radius: 20px;
+  border:0;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  margin-top: 5px;
+}
+
+.search-heading
+{
+  text-align: center;
+  font-size: 40px;
+}
+
+.search-jobs-button
+{
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  color: #FFFFFF;
+  padding: 1rem 2.6rem;
+  border-radius: 7px;
+  margin:auto;
+  margin-top: 20px;
+  width: max-content;
+  border:0;
+}
+.search-jobs-button:hover
+{
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+
+
+.showcase-companies
+{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.top-companies
+{
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 20px;
+  margin-top: 20px;
+  width: 270px;
+  
+}
+
+.companies-list
+{
+  list-style: none;
+}
+
+.companies-type-heading
+{
+  font-size:30px;
+  text-align: center;
+}
+.companies-item-div{
+  margin-top: 10px;
+}
+
+.companies-item-div > p{
+  display: inline;
+}
+
+.footer
+{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5% 10%;
+  width: 80%;
+  flex-direction: row;
+  background-color: rgb(71, 111, 112);
+}
+.footer-text
+{
+  text-align:left;
+  color: grey;
+  font-weight: bold;
+}
+.footer-content
+{
+  width: max-content;
+  height: max-content;
+}
+
+
+@media all and (max-width:800px)
+{
+  .top-div
+  {
+    background-image:url("register_image.jpg");
+    background-size:cover;
+  }
+  .heading
+  {
+    padding: 10px 0 10px 20px;
+    font-size: 30px;
+  }
+  .header
+  {
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    padding-bottom: 20px;
+    left: 0;
+    background-color: black;
+  }
+  .heading:hover
+{
+   font-size: 30px;
+}
+  .navbar
+  {
+    position: fixed;
+    top: 55px;
+    width: 100vw;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
+    border-top: 2px solid grey;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .navbar-buttons
+  {
+    padding: 15px 5%;
+    font-size:65%;
+    box-shadow: none;
+  }
+  .navbar-buttons-starts
+{
+  border-radius: 0;
+}
+.navbar-buttons-ends
+{
+  border-radius: 0;
+}
+
+  .buttons-div
+  {
+    margin-right: 35px;
+    width: 30%;
+  }
+  .login-signin-buttons
+  {
+    margin-right: 10px;
+    font-size: 11px;
+  }
+  
+  .search-jobs-div
+  {
+    margin-top: 230px;
+  }
+  .Search-jobs-input
+  {
+    margin-top: 20px;
+  }
+  .search-heading
+  {
+    font-size: 30px;
+  }
+
+  .footer
+  {
+    display: none;
+  }
+
+  .login-signin-buttons
+  {
+    --b: 3px;
+    --s: .45em;
+    padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+  }
+}

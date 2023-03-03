@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700&display=swap');
+
+body
+{
+  margin: 0;
+  background-image: url("bg.jpg");
+  background-size:cover;
+  backdrop-filter: blur(5px);
+}
+
+.container{
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  position:absolute;
+  left: 10%;
+  background-color: #003153;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+h1{
+    font-family: 'Archivo', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+.search-div
+{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 100%;
+}
+
+#input
+{
+  width: 100%;
+  padding: 16px;
+  border-radius: 50px;
+  margin-right: 10px;
+  border: 0;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.input-div{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+#btn
+{
+  border-radius: 50px;
+  padding: 16px 22px;
+  background-color: orange;
+  color: white;
+  border: 0;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  align-self: flex-start;
+  margin-left: 10px;
+}
+
+#results-div
+{
+  margin-top: 7%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: auto;
+  padding: 10px 20px;
+  height: 260px;
+}
+
+.result
+{
+  width: 150px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+#error-city
+{
+  margin: 2px 0 0 20px;
+  color: red;
+  display: none;
+}
+.city{
+  width: max-content;
+  display: inline;
+  font-size: 20px;
+  color: grey;
+}
+.id{
+  margin-left: 3px;
+  display: inline;
+  padding: 4px 8px 3px 8px;
+  background-color: orange;
+  color: white;
+  border-radius: 60px;
+  font-size: 10px;
+}
+
+.temperature-div
+{
+  display: flex;
+  margin-top: 20px;
+}
+
+h2{
+  margin: 0;
+  font-size: 50px;
+}
+.degree
+{
+  width: 5px;
+  height: 5px;
+  border: 2px solid black;
+  border-radius: 100%;
+}
+
+.celsius
+{
+  margin-top: 0;
+  font-size: 30px;
+}
+
+.icon
+{
+  font-size: 60px;
+}
+
+.message{
+  color: #2e2e2e;
+  font-size: 20px;
+}
+
+
+@media all and (max-width: 600px)
+{
+  .result
+  {
+    margin-right: 0;
+  }
+
+  .search-div{
+    flex-direction: column;
+    
+  }
+  #btn
+  {
+    margin-top: 5px;
+  }
+
+  #btn{
+    align-self: center;
+  }
+
+}
