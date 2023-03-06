@@ -127,6 +127,7 @@ module.exports = {
       }
       catch(error){return error;}
   },
+  //comment added
 
   getUserWithMail_password: async function (email,password) {
       try{
