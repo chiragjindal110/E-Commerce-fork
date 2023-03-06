@@ -1,0 +1,56 @@
+
+body{
+    background-image: url('images/profile_start_image.webp');
+}
+
+#authentication-div{
+    width: 50vw;
+    height: 40vh;
+    margin: auto;
+    top: 150px;
+    border: 5px solid white;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 15px;
+}
+#password-input{
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    border: 3px solid white;
+    color: white;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+::placeholder{
+    color: white;
+}
+
+#submit{
+    width: 120px;
+    height: 60px;
+    margin-top: 30px;
+    border-radius: 3px;
+    border: 3px solid white;
+    background-color: transparent;
+    color: white;
+    font-size: larger;
+    cursor: pointer;
+}
+
+#submit:hover{
+    width: 200px;
+    color: black;
+    background-color: white;
+    transition-duration: 0.8s;
+}
+
+h1{
+    font-size: 50px;
+    color: white;
+}

@@ -1,33 +1,23 @@
-const express = require('express');
-const fs = require('fs');
-const app = express()
+const express = require('express');const app = express()
 const session = require('express-session');
 const mailjet = require('node-mailjet').apiConnect(
     'ed4864c1bfaa9f4def636d4e34b6ef9d', 'd283715c82e7059aeaef312065bbd351'
 );
-const multer = require("multer");
-const upload = multer({ dest: 'Data_files/product_images/' })
 const sql = require('./sql');
-const { connect } = require('http2');
-const { json } = require('express');
 app.set("view engine", 'ejs');
-
 app.use(session({
     secret: 'Keyboard cat',
     resave: false,
     saveUninitialized: true
 }))
 
+var io = require('socket.io')(require('http').createServer(app));
+
 app.use(express.json());
 
 
 module.exports = {
-    // Hello: function(req, res, next){
-    //     res.end("Hey there hello");
-    // },
-    // Hii: function(req,res,next){
-    //     res.end("Yeahhhh");
-    // },
+
     error: (req,res)=>{
         res.render("error_page");
     },
@@ -35,12 +25,12 @@ module.exports = {
     islogin: (req, res) => {
         try{
             if (req.session.islogin)
-            res.send(JSON.stringify({ status: true }));
+            res.json({ status: true });
             else
-            res.send(JSON.stringify({ status: false }));
+            res.json({ status: false });
         }
         catch(error){
-            res.send(JSON.stringify({ status: false }));
+            res.json({ status: false });
         }
         
     },
@@ -54,7 +44,6 @@ module.exports = {
                 res.render('index');
         }
         catch(error){
-            console.log(error);
             res.render("error_page");
         }
     },
@@ -69,7 +58,6 @@ module.exports = {
             }
         }
         catch(error){
-            console.log(error);
             res.render("error_page");
         }
         
@@ -79,42 +67,41 @@ module.exports = {
         res.redirect('/home')
     },
 
-    validate: function (req, res) {
+    validate: async function (req, res) {
         try{
-            sql.getUserWithQuery(`select name from users where email='${req.body.email}'`)
-            .then(function (user) {
+            var user = await sql.getUserWithMail_password(req.body.email,req.body.password)
                 if (!user.name) {
                     var token = Date.now();
                     SendMail(req.body.email, token, req.body.name, function (err, body) {
                         if (body) {
                             sql.AddUser(req.body.name, req.body.email, req.body.phone, req.body.password, token)
                                 .then((result) => {
-                                    console.log(result);
-                                    if (result.status) {
+                                    if (result.user_id) {
+                                        console.log(result.user_id)
                                         req.session.name = req.body.name;
                                         req.session.islogin = 'true ';
                                         req.session.email = req.body.email;
                                         req.session.token = token;
                                         req.session.isVerified = 'false';
                                         req.session.address = "";
-                                        res.send(JSON.stringify({ flag: true }));
+                                        res.json({ flag: true });
                                     }
                                 })
                                 .catch((err) => {
                                     console.log(err);
-                                    res.send(JSON.stringify({ status: false }))
+                                    res.json({ status: false });
                                 })
                         }
                         else {
-                            res.send(JSON.stringify({ flag: false }));
+                            res.json({ flag: false });
                         }
 
                     })
                 }
                 else {
-                    res.send(JSON.stringify({ flag: false }));
+                    res.json({ flag: false });
                 }
-            })
+            
         }
         catch(error){
             console.log(error);
@@ -124,26 +111,24 @@ module.exports = {
 
     authenticate: (req, res) => {
         try{
-            sql.getUserWithQuery(`select * from users where email='${req.body.email}' and password ='${req.body.password}'`)
+            sql.getUserWithMail_password(req.body.email,req.body.password)
                 .then((result) => {
                     if (result.name) {
-                        console.log(result);
                         req.session.name = result.name;
                         req.session.email = result.email;
                         req.session.token = result.token;
                         req.session.islogin = true;
-                        console.log(result.verified,typeof(result.verified));
                         req.session.isVerified = result.verified;
                         req.session.user_id = result.user_id;
                         req.session.address = result.address;
-                        res.send(JSON.stringify({ flag: true }));
+                        res.json({ flag: true });
                     }
                     else {
-                        res.send(JSON.stringify({ flag: false }));
+                        res.json({ flag: false });
                     }
     
                 }).catch((err) => {
-                    res.send(JSON.stringify({ flag: false }));
+                    res.json({ flag: false });
                 })
         }
         catch(error){
@@ -156,7 +141,19 @@ module.exports = {
     seller: (req, res) => {
         try{
             if (req.session.islogin && req.session.isVerified==='true ') {
-                res.render('seller');
+                sql.getSeller(req.session.user_id)
+                .then((result)=>{
+                    if(result.isAuthorized=='false')
+                    {
+                        res.render('sellerrequestpage');
+                    }
+                    else if(result.isAuthorized=='true')
+                    res.render('seller-admin')
+                    else
+                    res.render("seller");
+                    
+                })
+                
             }
             else if(!req.session.islogin)
             {
@@ -176,9 +173,7 @@ module.exports = {
     getProducts: (req, res) => {
         try{
             sql.getProducts(req.body.start)
-                .then((result) => {
-                    res.json(result);
-                })
+                .then((result) => {res.json(result);})
         }
         catch(error){
             console.log(error);
@@ -197,7 +192,7 @@ module.exports = {
             sql.UpdateQuery(`Update users set verified='true' where token='${token}'`)
                 .then(function (result) {
                     if (result.status) {
-                        sql.getUserWithQuery(`select name,email from users where token = '${token}'`)
+                        sql.getUserWithToken(token)
                             .then((user) => {
                                 req.session.isVerified = true;
                                 req.session.islogin = true;
@@ -207,7 +202,7 @@ module.exports = {
                                 req.session.address = "";
                                 res.redirect('/home');
                             })}
-                }).catch((err)=>{res.send(JSON.stringify({status:false}))})  
+                }).catch((err)=>res.json({ status: false }))  
         }
         catch(error){
             console.log(error);
@@ -229,11 +224,11 @@ module.exports = {
         {
             try{
                 //While implementing the authorization, redirect to the selleradmin when seller is Authorized,get it from the seller table
-                        sql.insertSeller(req.session.user_id, req.body.name, req.body.address, true, req.body.gst)
+                        sql.insertSeller(req.session.user_id, req.body.name, req.body.location, false, req.body.gst)
                             .then((result) => {
-                                res.send(JSON.stringify({status:result.status}))
+                                res.json({ status: result.status });
                             })    
-                    .catch((err)=>{res.send(JSON.stringify({status:false}))})  
+                    .catch((err)=>{res.json({ status: false });})  
             }
             catch(error){
                 console.log(error);
@@ -246,16 +241,38 @@ module.exports = {
         }
     },
 
+    sellerrequestpage: (req,res)=>{
+        try{
+            if (req.session.islogin && req.session.isVerified==='true ') {
+                sql.getSeller(req.session.user_id)
+                .then((result)=>{
+                    if(result.isAuthorized=='false')
+                    res.render('sellerrequestpage');
+                    else
+                    res.render('error_page');
+                })
+                
+            }
+            else if(!req.session.islogin)
+            {
+                res.render("home", { login: false })
+            }
+            else {
+                res.render("verify");
+            }
+        }
+        catch(error){
+            console.log(error);
+            res.render("error_page");
+        }
+    }
 
-    selleradmin: (req, res) => {
+    ,selleradmin: (req, res) => {
         console.log(req.session);
         if(req.session.islogin && req.session.isVerified==='true ')
         {
             try{
-                if(req.session.islogin &&req.session.isVerified==='true ')
                 res.render("seller-admin");
-                else
-                res.render("error_page");
             }
             catch(error){
                 console.log(error);
@@ -272,15 +289,15 @@ module.exports = {
         try{
                 if(req.session.isVerified==='true ' && req.session.islogin)
                 {
-                sql.getUserWithQuery(`select seller_id from users as u,sellers as s where u.user_id = s.user_id and u.email = '${req.session.email}';`)
+                sql.getSeller(req.session.user_id)
                     .then((result) => {
                         sql.insertProducts(result.seller_id, req.body.product_name, req.body.product_description, req.body.product_stock, req.body.product_price, req.file.filename)
                             .then(function (result) {
                                 if (result.status == true) {
-                                    res.send(JSON.stringify({ status: true,product_pic: req.file.filename }));
+                                    res.json({ status: true,product_pic: req.file.filename });
                                 }
                                 else{
-                                    res.send(JSON.stringify({status:false}));
+                                    res.json({ status: false });
                                 }
                             })
                     })
@@ -299,11 +316,10 @@ module.exports = {
 
 
     addtocart: (req, res) => {
-        console.log(req.session);
         if(req.session.islogin && req.session.isVerified==='true ')
         {
             try{
-                    sql.ifProductPresent(`select product_id,quantity from cart where user_id=${req.session.user_id} and product_id=${req.body.product_id}`)
+                    sql.ifProductPresentInCart(req.session.user_id,req.body.product_id)
                     .then((product)=>{
                         if(product.product_id)
                         {
@@ -311,13 +327,13 @@ module.exports = {
                             let stat=`update cart set quantity=${product.quantity}+1 where user_id=${req.session.user_id} and product_id=${product.product_id}`;
                             sql.UpdateQuery(stat)
                             .then((result)=>{
-                                res.send(JSON.stringify({status:result.status}))
+                                res.json({ status: result.status });
                             })
                         }
                         else{
                             sql.inserttocart(req.session.user_id,req.body.product_id, req.body.quantity)
                             .then((result)=>{
-                                res.send(JSON.stringify({status:result.status}))
+                                res.json({ status: result.status });
                             })
                         }
                     })  
@@ -358,7 +374,7 @@ module.exports = {
         try{
             if(req.session.islogin &&req.session.isVerified==='true ')
             {
-                sql.getcart(`select p.stock,p.product_id,quantity,product_name,product_pic,product_description,price from cart as c,products as p where p.product_id=c.product_id and c.user_id=${req.session.user_id} and p.status=1`)
+                sql.getCart(req.session.user_id)
                 .then((result)=>{
                     res.json(result);
                 })
@@ -380,7 +396,7 @@ module.exports = {
             {
                 sql.UpdateQuery(`update cart set quantity=quantity+${req.body.change} where product_id=${req.body.product_id} and user_id=${req.session.user_id}`)
                 .then((result)=>{
-                    res.send(JSON.stringify({status:result.status}));
+                    res.json({ status: result.status });
                 })
                 .catch(err=>console.log(err))
             }
@@ -399,8 +415,8 @@ module.exports = {
             if(req.session.islogin && req.session.isVerified==='true ')
             {
                 sql.UpdateQuery(`delete from cart where user_id=${req.session.user_id} and product_id=${req.body.product_id}`)
-                .then(result=>res.send(JSON.stringify({status:result.status})))
-                .catch((err)=>{res.send(JSON.stringify({status:false}))})
+                .then(result=>res.json({ status: result.status }))
+                .catch((err)=>res.json({ status: false }))
             }
             else{
                 res.render("error_page");
@@ -416,7 +432,7 @@ module.exports = {
         try{
             if(req.session.islogin && req.session.isVerified==='true ')
             {
-                sql.getsellerproducts(`select product_id,product_name,product_pic,product_description,stock,price from products p,sellers s where s.seller_id = p.seller_id and s.user_id=${req.session.user_id} and p.status=1;`)
+                sql.getSellerProducts(req.session.user_id)
             .then((result)=>{
                 res.json(result);
             })
@@ -436,7 +452,7 @@ module.exports = {
         try{
             if(req.session.islogin && req.session.isVerified==='true ')
             {
-                sql.UpdateQuery(`update products set status=0 where product_pic='${req.body.product_pic}'`)
+                sql.removeProduct(req.body.product_pic)
                 .then(result=>res.json(result))
             }
             else{
@@ -459,12 +475,12 @@ module.exports = {
                 else
                     picname = req.file.filename;
                 
-                sql.getUserWithQuery(`select seller_id from users as u,sellers as s where u.user_id = s.user_id and u.email = '${req.session.email}';`)
+                    sql.getSeller(req.session.user_id)
                     .then((result) => {
                         sql.UpdateQuery(`update products set product_name='${req.body.product_name}',product_description='${req.body.product_description}',stock=${req.body.product_stock},price=${req.body.product_price},product_pic='${picname}' where seller_id='${result.seller_id}' and product_pic='${req.body.old_product_pic}'`)
                             .then(function (result) {
                                 if (result.status == true) {
-                                    res.send(JSON.stringify({ status: true}));
+                                    res.json({ status: true });
                                 }
                             })
                             .catch((err)=>{
@@ -498,18 +514,18 @@ module.exports = {
                 if(result.status)
                 {
                     req.session.address = req.body.address;
-                    res.send(JSON.stringify({status:true}));
+                    res.json({ status: true });
                 }
             })
-            .catch(error=>{res.stringify({status:false})})
+            .catch(error=>{res.json({ status: false })})
         }
     },
 
     getproduct: (req,res)=>{
         if(req.body.product_id)
         {
-            sql.getUserWithQuery(`select * from products where product_id=${req.body.product_id}`)
-            .then(result=>{console.log(result);res.send(JSON.stringify(result))})
+            sql.getProductDetails(req.body.product_id)
+            .then(result=>{res.json(result)})
             .catch(err=>{res.send("not a product")})
         }
     },
@@ -517,18 +533,22 @@ module.exports = {
     placeorder: (req,res)=>{
         if(req.session.islogin && req.session.isVerified==="true ")
             {
-                sql.placeorder(req.body.products,req.session.addres,re.session.user_id)
+                if(req.body.products.length==0)return;
+                sql.placeorder(req.body.products,req.session.address,req.session.user_id)
                 .then((response)=>{
                     if(response.status)
                     {
-                        res.send(JSON.stringify({message:"Orderd Placed Successfully,Track Your Order from My Orders"}));
+                        res.json({message:"Orderd Placed Successfully,Track Your Order from My Orders"});
+                        req.body.products.forEach(async (product)=>{
+                            await sql.UpdateQuery(`delete from cart where product_id=${product.product_id}`);
+                        })
                     }
                     else{
-                        res.send(JSON.stringify({message:"Sorry!! Due to Technical mistake,we were not able to place your order"}));
+                        res.json({message:"Sorry!! Due to Technical mistake,we were not able to place your order"});
                     }
                 })
                 .catch((err)=>{
-                    res.send()
+                    res.json({message:"Sorry!! Due to Technical mistake,we were not able to place your order"});
                 })
             }
         else{
@@ -543,21 +563,74 @@ module.exports = {
                 res.json(result);
             })
             .catch((error)=>{
-                res.send(JSON.stringify({status:false}))
+                res.json({status:false})
             })
+        }
+    },
+
+    orderscompleted:(req,res)=>{
+        res.render("seller_orders");
+    },
+
+
+    getsellerorders: (req,res)=>{
+        if(req.session.islogin && req.session.isVerified)
+        {
+            try{
+                sql.getSellerOrders(req.session.user_id)
+                .then(response=>res.json(response))
+            }
+           catch(error){
+            console.log(error);
+           }
+            
+        }
+    },
+
+    unauthorizedsellers: (req,res)=>{
+        if(req.session.isadmin)
+        {
+            sql.getItemsWithQuery()
+            .then(result=>{
+                res.json(result)
+            })
+        }
+        else{
+            res.json({status:false})
+        }
+    },
+    authorizeseller: (req,res)=>{
+        if(req.session.isadmin){
+            sql.UpdateQuery(`update sellers set isAuthorized = 'true' where seller_id=${req.body.seller_id}`)
+            .then(result=>res.json(result))
         }
     }
 
     ,admin: (req,res)=>{
-        const {key} = req.params;
-       
-    }
+        let key = req.query.key;
+        if(key == 'ch37a@892h$hh1123')
+        {
+            res.render("admin");
+        }
+        else{
+            res.render("error_page");
+        }
+    },
+    verifyadmin: (req,res)=>{
+        let password = req.query.password;
+        if(password == 'chirag24@09')
+        {
+            req.session.isadmin = true;
+            res.render("admin_page");
+        }
+        else{
+            res.render("error_page");
+        }
+    },
 
 }
 
 function SendMail(email, token, name, callback) {
-    console.log(mailjet);
-
     const request = mailjet.post('send', { version: 'v3.1' }).request({
         Messages: [
             {
@@ -580,11 +653,9 @@ function SendMail(email, token, name, callback) {
     })
     request
         .then(result => {
-            console.log(result.body);
             callback(null, result.body);
         })
         .catch(err => {
-            console.log(err.statusCode)
             callback(err, null);
         })
 }

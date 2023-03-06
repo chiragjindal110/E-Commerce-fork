@@ -4,7 +4,9 @@
         <button class="buttons seller-btn"  id="become-seller">Become Seller</button>
         <% if(!login){ %>
             <button class="buttons"  id="login-register-btn">Login/Register</button>
+            
         <% }else{ %>
+            <button class="buttons"  id="My-orders">My Orders</button>
             <button class="buttons"  id="logout" onclick="logout()">Logout</button>
             <div id="icon-div"class="icon-div">
                 <i id="cart" class="fa fa-shopping-cart icon"></i>

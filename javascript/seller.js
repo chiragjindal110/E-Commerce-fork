@@ -16,7 +16,7 @@ apply_btn.addEventListener("click",(event)=>{
         .then((result)=>{
             if(result.status)
             {
-                window.location.href= "/selleradmin";
+                window.location.href= "/sellerrequestpage";
             }
             else{
                 alert("something went wrong");

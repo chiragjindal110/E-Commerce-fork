@@ -27,12 +27,20 @@ function AppendOrders(order){
     var quantity_div = document.createElement("div");
     var quantity = document.createElement("p");
     var product_price = document.createElement("h1");
+    var order_status = document.createElement("h1");
+    var order_date = document.createElement("p");
+    
 
-    quantity.innerText = order.quantity * 1;
+    quantity.innerText = "Order Quantity: "+order.quantity * 1 + "Kgs";
     product_name.innerText = order.product_name;
     product_image.setAttribute("src", order.product_pic);
     product_price.innerText = `₹${order.item_value}`;
     seller_name.innerText = "SELLER: chirag Enterprises";
+    var status = order_status;
+    status = JSON.parse(order.status);
+    order_status.innerText = status.status;
+    order_status.style.color = "green";
+    order_date.innerText = "Order Placed on: "+order.order_time.split("T")[0];
 
     product_image.style.minWidth = "250px ";
     product_image.style.maxWidth = "250px ";
@@ -51,6 +59,8 @@ function AppendOrders(order){
     product_details_div.appendChild(product_name)
     product_details_div.appendChild(seller_name)
     product_details_div.appendChild(quantity_div)
+    product_details_div.appendChild(order_status);
+    product_details_div.appendChild(order_date);
     
     cart_item_div.appendChild(product_image);
     cart_item_div.appendChild(product_details_div);

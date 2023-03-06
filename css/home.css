@@ -4,6 +4,9 @@ body{
     margin: 0;
     padding: 0;
     background-color: white;
+    background-image: url('images/register_image.jpg');
+    
+    background-size: cover;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 button{
@@ -74,7 +77,7 @@ hr{
     align-items: center;
     padding-top: 25px;
     background-color: #FFFDF9;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,rgba(0,0,0,0.2) 0px -3px 0px inset;
     margin: 20px 10px;
 }
 .product:hover{
@@ -165,7 +168,7 @@ hr{
 
 .description_div{
     width: 550px;
-    height: 570px;
+    max-height: 620px;
     font-family: 'Hanuman', serif;
     padding: 10px;
     background-color: white;

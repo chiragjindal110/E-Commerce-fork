@@ -16,8 +16,8 @@ signup_text.onclick = () => {
 var login_submit = document.getElementById('login-submit');
 var signup_submit = document.getElementById('signup-submit');
 
+var login_email = document.getElementById('login-email');
 login_submit.onclick = () => {
-    var login_email = document.getElementById('login-email');
     var login_password = document.getElementById('login-password');
     fetch('/authenticate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: login_password.value, email: login_email.value }) })
         .then(res => res.json())
@@ -59,3 +59,22 @@ skip.onclick = ()=>{
     window.location.href = "/skip";
 }
 
+// var forgot_password = document.getElementById("forgot-password");
+// forgot_password.addEventListener("click",()=>{
+//     if(login_email.value.trim()=="")
+//     {
+//         alert("Please Enter Email FIrst");
+//     }
+//     else{
+//         fetch("/forgotpassword",{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:login_email.value})})
+//         .then(res=>res.json())
+//         .then((result)=>{
+//             if(result.status){
+//                 alert("Email has been sent to you,Kindly change your password from there");
+//             }
+//             else{
+//                 alert("Email doesn't Exists");
+//             }
+//         })
+//     }
+// })

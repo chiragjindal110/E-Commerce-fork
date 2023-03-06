@@ -10,4 +10,10 @@ if(document.getElementById("login-register-btn"))
             login_signup_back.style.display = "flex";
     } 
 }
+if(document.getElementById("My-orders"))
+{
+    document.getElementById("My-orders").onclick = ()=>{
+        window.location.href = "/myorders";
+    } 
+}
 

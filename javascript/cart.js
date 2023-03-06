@@ -37,12 +37,18 @@ function AppendProduct(product) {
     product_image.setAttribute("src", product.product_pic);
     product_price.innerText = `₹${product.price}/kg`;
     seller_name.innerText = "SELLER: chirag Enterprises";
-    if (product.stock >= product.quantity) {
+    if (product.stock > product.quantity) {
         in_stock.innerText = "IN STOCK";
         in_stock.style.color = "green";
     }
-    else {
+    else if(product.stock==0){
         in_stock.innerText = "OUT OF STOCK";
+        in_stock.style.color = "red";
+        quantity.innerText = product.stock * 1;
+        quantity_increase_btn.disabled = true;
+    }
+    else {
+        in_stock.innerText = "NO MORE PRODUCTS CAN BE ADDED";
         in_stock.style.color = "red";
         quantity.innerText = product.stock * 1;
         quantity_increase_btn.disabled = true;
@@ -119,8 +125,8 @@ function AppendProduct(product) {
             .then(res => res.json())
             .then((result) => {
                 if (result.status) {
-                    if (quantity.innerText * 1 + 1 >= product.stock) {
-                        in_stock.innerText = "OUT OF STOCK";
+                    if (quantity.innerText * 1 + 1 > product.stock) {
+                        in_stock.innerText = "NO MORE PRODUCTS CAN BE ADDED";
                         in_stock.style.color = "red";
                         quantity_increase_btn.disabled = true;
                     }

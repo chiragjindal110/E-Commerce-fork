@@ -31,7 +31,7 @@ body{
 {
     display: flex;
     align-items: center;
-    width: 500px;
+    width: 600px;
     margin-right: 60px;
     justify-content: space-evenly;
 }
@@ -44,6 +44,7 @@ body{
     font-size: large;
     border:3px solid white;
     cursor: pointer;
+    
 }
 
 .buttons:hover{
@@ -73,6 +74,7 @@ body{
     padding: 15px 25px;
     margin-right: 10px;
     border: 0;
+    border-radius: 5px;
 }
 .seller-btn:hover{
     border: 2px solid #cb410b;

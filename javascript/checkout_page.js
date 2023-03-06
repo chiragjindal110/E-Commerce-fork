@@ -17,7 +17,7 @@ placeorder_btn.addEventListener("click",()=>{
     .then((res)=>{
         alert(res.message);
         localStorage.clear();
-        window.location.href="/home";
+        window.location.href="/";
     })
 })
 if(storeaddress.innerText=="")
@@ -105,7 +105,8 @@ function AppendProduct(product) {
     product_image.setAttribute("src", product.product_pic);
     product_price.innerText = `₹${product.price}/kg`;
     seller_name.innerText = "SELLER: chirag Enterprises";
-    if(product.stock>=product.quantity)
+
+    if(product.stock>product.quantity)
     {in_stock.innerText = "IN STOCK";}
     else
     {in_stock.innerText="OUT OF STOCK";}
@@ -118,12 +119,18 @@ function AppendProduct(product) {
     product_image.style.minHeight="300px ";
     product_image.style.maxHeight="300px ";
     product_description.style.marginBottom = "0";
-    if(product.stock>=product.quantity)
+    if(product.stock>product.quantity)
     in_stock.style.color = "green";
+    else if(product.stock==0)
+    {
+        deletefrom_local_storage(product);
+        products_div.removeChild(cart_item_div);
+    }
     else
     {
         in_stock.style.color = "red";
         quantity.innerText = product.stock*1;
+        change_in_localstorage(product,product.stock-product.quantity)
         quantity_increase_btn.disabled = true;
     }
     in_stock.style.marginTop = "0";
@@ -154,6 +161,10 @@ function AppendProduct(product) {
     products_div.appendChild(cart_item_div);
     amount.innerText = amount.innerText*1 + quantity.innerText*1*product.price;
     items.innerText = items.innerText*1 + quantity.innerText*1;
+    if(quantity.innerText*1 ==0)
+    {deletefrom_local_storage(product);
+        products_div.removeChild(cart_item_div);
+    }
 
 
     quantity_decrease_btn.addEventListener("click", () => {
@@ -174,7 +185,7 @@ function AppendProduct(product) {
 
     })
     quantity_increase_btn.addEventListener("click", () => {
-        if(quantity.innerText*1 +1 >=product.stock)
+        if(quantity.innerText*1 +1 >product.stock)
         {
             in_stock.innerText = "OUT OF STOCK";
             in_stock.style.color = "red";

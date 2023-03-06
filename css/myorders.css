@@ -23,7 +23,7 @@ body{
     align-items: center;
     margin: auto;
     overflow: auto;
-    height: 65vh;
+    max-height: 65vh;
 }
 .header{
     width: 100vw;
@@ -33,7 +33,7 @@ body{
     background-color: #1c4966;
     color: white;
     align-items: center;
-    padding: 2px 8px;
+
 }
 #products-div-text{
     display: flex;
@@ -121,7 +121,26 @@ hr{
 {
     transform: scale(1);
 }
+.description_btn_div{
+    display: flex;
+    justify-content: center;
+}
 
+.descr_btns
+{
+    width: 70%;
+    padding: 10px;
+    background-color: #cb410b;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: larger;
+}
+.descr_btns:hover{
+    color: #cb410b;
+    background-color: transparent;
+    border: 2px solid #cb410b;
+}
 
 .order-product-name
 {
@@ -192,7 +211,7 @@ hr{
 
 .description_div{
     width: 550px;
-    height: 570px;
+    max-height: 600px;
     font-family: 'Hanuman', serif;
     padding: 10px;
     background-color: white;
@@ -217,4 +236,7 @@ hr{
 
 .descr_close:hover{
     color:cornflowerblue;
+}
+.quantity{
+    margin: 0;
 }

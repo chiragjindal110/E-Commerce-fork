@@ -4,6 +4,7 @@ var product_pic = document.getElementById("product_pic");
 var product_name1 = document.getElementById("product-name");
 var product_description1 = document.getElementById("product-description");
 var product_stock = document.getElementById("product-stock");
+var orders_completed = document.getElementById("orders_completed");
 var product_price1 = document.getElementById("product-price");
 var image = document.getElementById("image");
 image.style.backgroundImage ="url(' ')";
@@ -179,3 +180,7 @@ function AppendProduct(product) {
     })
 
 }
+
+orders_completed.addEventListener("click",()=>{
+    window.location.href= "/orderscompleted"
+})

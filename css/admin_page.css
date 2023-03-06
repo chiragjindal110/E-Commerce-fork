@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.header{
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: #1c4966;
+    color: white;
+    align-items: center;
+}
+
+h1{
+    margin: 0 10px;
+}
+
+#sellers-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.seller-div{
+    border: 0;
+    border-radius: 10px;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    background-color: #FFFDF9;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    margin: 20px 10px;
+}
+
+.descr_btns
+{
+    width: 70%;
+    padding: 10px;
+    background-color: #cb410b;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    font-size: larger;
+}
+.descr_btns:hover{
+    color: #cb410b;
+    background-color: transparent;
+    border: 2px solid #cb410b;
+}
